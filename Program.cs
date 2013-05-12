@@ -14,7 +14,8 @@ namespace ProjectEuler
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            long answer = Problem1.Solution(1000);
+            long answer = Problem1.Solution(100000000);
+            //long answer = Problem1.Solution(1000);
             Debug.WriteLine(answer);
 
             sw.Stop();
