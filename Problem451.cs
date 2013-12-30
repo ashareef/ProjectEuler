@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,21 @@ namespace ProjectEuler
 {
     public static class Problem451
     {
-        public static long Solution(long limit)
+        public static void Solution()
         {
-            return 0;
+            Debug.WriteLine(gcd(24, 7));
+        }
+
+        public static long gcd(long a, long b)
+        {
+            while (b != 0)
+            {
+                long tmp = b;
+                b = a % b;
+                a = tmp;
+            }
+
+            return a;
         }
     }
 }
