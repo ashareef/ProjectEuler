@@ -13,7 +13,7 @@ namespace ProjectEuler
 		public static void Solution()
 		{
 			BigInteger mLimit = 1000000000;
-			BigInteger limit = 99;
+			BigInteger limit = 157;
 			BigInteger sum = 0;
 
 			for (BigInteger n = limit; n <= limit; n++)
@@ -21,8 +21,9 @@ namespace ProjectEuler
 				BigInteger k = 0;
 				BigInteger inc = 1;
 				BigInteger m = 10;
-                for (BigInteger i = (BigInteger) Math.Pow(10, n.ToString().Length); i > 0; i--)
-				{
+                //for (BigInteger i = (BigInteger) Math.Pow(10, n.ToString().Length); i > 0; i--)
+                for (BigInteger i = 1; i < 10; i++)
+                {
 					if (BigInteger.ModPow(n, i, m) == i)
 					{
 						m *= 10;
