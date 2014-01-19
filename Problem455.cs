@@ -12,34 +12,35 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			BigInteger mLimit = 1000000000;
-			BigInteger limit = 157;
+			BigInteger mLimit = (BigInteger) Math.Pow(10,9);
+			BigInteger limit = (BigInteger) Math.Pow(10,6);
 			BigInteger sum = 0;
-
-			for (BigInteger n = limit; n <= limit; n++)
+			// 255045053
+			for (BigInteger n = 2; n <= limit; n++)
 			{
 				BigInteger k = 0;
 				BigInteger inc = 1;
-				BigInteger m = 10;
-                //for (BigInteger i = (BigInteger) Math.Pow(10, n.ToString().Length); i > 0; i--)
-                for (BigInteger i = 1; i < 10; i++)
-                {
+				BigInteger m = 100;
+				for (BigInteger i = 0; i < 100; i++)
+				{
+					//Debug.WriteLine((BigInteger) Math.Pow(10, n.ToString().Length));
 					if (BigInteger.ModPow(n, i, m) == i)
 					{
-						m *= 10;
-						k = BigInteger.ModPow(n, i, m);
-						while (m < mLimit)
+						k = i;
+						while (m <= mLimit)
 						{
-							m *= 10;
 							k = BigInteger.ModPow(n, k, m);
-							
+							m*= 10;
 						}
 						break;
 					}
-				
 				}
-                //Debug.WriteLine(n + " " + k);
+				if (k != 0)
+					while (k != BigInteger.ModPow(n, k, mLimit))
+						k = BigInteger.ModPow(n, k, mLimit);
 				sum += k;
+				//Debug.WriteLine(n + " " + k);
+				//Debug.WriteLine(n + "\t" + k + "\t" + BigInteger.ModPow(n,k,(BigInteger) Math.Pow(10,k.ToString().Length)));
 			}
 			Debug.WriteLine(sum);
 		}
