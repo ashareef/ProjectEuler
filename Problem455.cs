@@ -12,18 +12,35 @@ namespace ProjectEuler
     {
         public static void Solution()
         {
-            BigInteger m = 1000000000;
-            BigInteger limit = 10;
+            BigInteger mLimit = 1000000000;
+            BigInteger limit = 4;
             BigInteger sum = 0;
-            for (BigInteger n = 2; n <= limit; n++)
-                for (BigInteger k = m - 1; k > 0; k--)
+
+            for (BigInteger n = limit; n <= limit; n++)
+            {
+                BigInteger m = 10;
+                BigInteger k = 1;
+                BigInteger inc = 1;
+                BigInteger kMax = k;
+                while (m < mLimit)
+                {                 
                     if (BigInteger.ModPow(n, k, m) == k)
-                        sum += k;
-
-            Debug.WriteLine(sum);
-            //Debug.WriteLine(BigInteger.ModPow(4, 411728896, 1000000000));
-
+                    {
+                        inc *= 10;
+                        m *= 10;
+                        kMax = k;
+                        k += inc;
+                    }
+                    else
+                    {
+                        k += inc;
+                    }
+                }
+                Debug.WriteLine(kMax);
+            }
+   
         }
+
 
     }
 }
