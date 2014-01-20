@@ -20,14 +20,17 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			long limit = 10;
+			long limit = 20;
 			Dictionary<long, long> primeFactors = PEUtil.PrimeFactorizedFactorial(limit);
 			long m = 100000;
 			long product = 1;
 			primeFactors[2] -= primeFactors[5];
 			primeFactors.Remove(5);
 			foreach (var factor in primeFactors.Keys)
+			{
 				product *= (long) BigInteger.ModPow((BigInteger) factor, (BigInteger) primeFactors[factor], (BigInteger) m);
+				product %= m;
+			}
 			Debug.WriteLine(product);
 		}		
 	}
