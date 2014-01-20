@@ -45,6 +45,7 @@
     <Compile Include="PEUtil.cs" />
     <Compile Include="Problem1.cs" />
     <Compile Include="Problem268.cs" />
+    <Compile Include="Problem271.cs" />
     <Compile Include="Problem449.cs" />
     <Compile Include="Problem451.cs" />
     <Compile Include="Problem455.cs" />

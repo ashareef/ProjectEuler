@@ -13,9 +13,9 @@ namespace ProjectEuler
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-
-            Problem268.Solution();
-            Problem268.NaiveSolution();
+			
+            Problem271.Solution();
+            Problem271.NaiveSolution();
             
             sw.Stop();
             Debug.WriteLine("elapsed: {0}", sw.Elapsed);
