@@ -25,7 +25,7 @@ namespace ProjectEuler
 						while (m <= mLimit)
 						{
 							k = BigInteger.ModPow(n, k, m);
-							m* = 10;
+							m *= 10;
 						}
 						break;
 					}
