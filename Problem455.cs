@@ -34,7 +34,5 @@ namespace ProjectEuler
 			}
 			Debug.WriteLine(sum);
 		}
-		
-
 	}
 }
