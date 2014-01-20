@@ -34,5 +34,21 @@ namespace ProjectEuler
 			}
 			Debug.WriteLine(sum);
 		}
+		
+		public static void NaiveSolution()
+		{
+			BigInteger m = 10000;
+			BigInteger limit = 100;
+			BigInteger sum = 0;
+			
+			for (BigInteger n = 2; n <= limit; n++)
+			{
+				for (BigInteger k = m; k >= 0; k--)
+					if (BigInteger.ModPow(n, k, m) == k)
+						sum += k;
+			}
+			
+			Debug.WriteLine(sum);
+		}
 	}
 }
