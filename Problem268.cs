@@ -14,40 +14,29 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
+
+		}
+		
+		public static void NaiveSolution()
+		{
 			long limit = 1000;
-			List<long>[] n = new List<long>[limit];
 			long sum = 0;
+			List<long>[] n = new List<long>[limit];
+			List<long> primes = PEUtil.Primes(100);
 			
 			for (long i = 0; i < limit; i++)
 				n[i] = new List<long>();
 			
-			for (long i = 2; i < limit; i++)
-				if (n[i].Count == 0)
-					for (long j = i; j < limit; j += i)
-						n[j].Add(i);
+			foreach (var prime in primes)
+				for (long j = prime; j < limit; j += prime)
+					n[j].Add(prime);
 			
 			for (long i = 0; i < limit; i++)
 				if (n[i].Count >= 4)
 					sum++;
 			
 			Debug.WriteLine(sum);
-
 		}
-		
-		public static List<long> Primes(long n)
-        {
-            List<long> result = new List<long>();
-            bool[] notPrimes = new bool[n];
-
-            for (long i = 2; i < n; i++)
-                for (long j = i + i; j < n; j += i)
-                    notPrimes[j] = true;
-
-            for (long i = 2; i < n; i++)
-                if (notPrimes[i] == false)
-                    result.Add(i);
-            return result;
-        }
 		
 		
 	}
