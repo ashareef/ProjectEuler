@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace ProjectEuler
@@ -19,7 +16,6 @@ namespace ProjectEuler
 			for (BigInteger n = 2; n <= limit; n++)
 			{
 				BigInteger k = 0;
-				BigInteger inc = 1;
 				BigInteger m = 100;
 				for (BigInteger i = 0; i < 100; i++)
 				{
@@ -29,14 +25,11 @@ namespace ProjectEuler
 						while (m <= mLimit)
 						{
 							k = BigInteger.ModPow(n, k, m);
-							m*= 10;
+							m* = 10;
 						}
 						break;
 					}
 				}
-				if (k != 0)
-					while (k != BigInteger.ModPow(n, k, mLimit))
-						k = BigInteger.ModPow(n, k, mLimit);
 				sum += k;
 			}
 			Debug.WriteLine(sum);
