@@ -5,11 +5,14 @@ using System.Diagnostics;
 namespace ProjectEuler
 {
 	/// <summary>
-	/// Counting numbers with at least four distinct prime factors less than 100
+	/// Modular Cubes, part 1
 	/// </summary>
 	/// 
-	// It can be verified that there are 23 positive integers less than 1000 that are divisible by at least four distinct primes less than 100.
-	// Find how many positive integers less than 10^16 are divisible by at least four distinct primes less than 100.
+	// For a positive number n, define S(n) as the sum of the integers x, for which 1<x<n and
+	// x3≡1 mod n.
+	// When n=91, there are 8 possible values for x, namely : 9, 16, 22, 29, 53, 74, 79, 81.
+	// Thus, S(91)=9+16+22+29+53+74+79+81=363.
+	//Find S(13082761331670030).
 	public static class Problem271
 	{
 		public static void Solution()
@@ -19,7 +22,11 @@ namespace ProjectEuler
 		
 		public static void NaiveSolution()
 		{
+			long n = 91;
+			for (long k = 6; k < 1000; k++)
+			{
 
+			}
 		}
 		
 		
