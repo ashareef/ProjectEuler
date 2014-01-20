@@ -36,6 +36,18 @@ namespace ProjectEuler
             return result;
         }
 		
+		public static Dictionary<long, long> PrimeFactorizedFactorial(long n, List<long> primes)
+        {
+            Dictionary<long, long> result = new Dictionary<long, long>();
+            foreach (var prime in primes)
+            {
+                long k = Nu(n, prime);
+                if (k > 0)
+                    result.Add(prime, k);
+            }
+            return result;
+        }
+		
         public static long Nu(long n, long p)
         {
             long result = 0;

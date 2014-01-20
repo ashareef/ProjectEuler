@@ -15,7 +15,6 @@ namespace ProjectEuler
             sw.Start();
 			
             Problem160.Solution();
-            Problem160.NaiveSolution();
             
             sw.Stop();
             Debug.WriteLine("elapsed: {0}", sw.Elapsed);

@@ -22,11 +22,7 @@ namespace ProjectEuler
 		
 		public static void NaiveSolution()
 		{
-			long n = 91;
-			for (long k = 6; k < 1000; k++)
-			{
 
-			}
 		}
 		
 		

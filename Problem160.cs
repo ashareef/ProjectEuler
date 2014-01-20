@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -19,15 +20,16 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-
-		}
-		
-		public static void NaiveSolution()
-		{
-
-		}
-		
-		
+			long limit = 10;
+			Dictionary<long, long> primeFactors = PEUtil.PrimeFactorizedFactorial(limit);
+			long m = 100000;
+			long product = 1;
+			primeFactors[2] -= primeFactors[5];
+			primeFactors.Remove(5);
+			foreach (var factor in primeFactors.Keys)
+				product *= (long) BigInteger.ModPow((BigInteger) factor, (BigInteger) primeFactors[factor], (BigInteger) m);
+			Debug.WriteLine(product);
+		}		
 	}
 }
 
