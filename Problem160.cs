@@ -20,8 +20,10 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			long limit = 20;
-			Dictionary<long, long> primeFactors = PEUtil.PrimeFactorizedFactorial(limit);
+			//53472
+			long limit = 200000;
+			List<long> primes = PEUtil.Primes(limit + 1);
+			Dictionary<long, long> primeFactors = PEUtil.PrimeFactorizedFactorial(limit, primes);
 			long m = 100000;
 			long product = 1;
 			primeFactors[2] -= primeFactors[5];
@@ -30,6 +32,7 @@ namespace ProjectEuler
 			{
 				product *= (long) BigInteger.ModPow((BigInteger) factor, (BigInteger) primeFactors[factor], (BigInteger) m);
 				product %= m;
+				Debug.Print(factor + " " + primeFactors[factor]);
 			}
 			Debug.WriteLine(product);
 		}		
