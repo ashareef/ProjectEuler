@@ -29,12 +29,16 @@ namespace ProjectEuler
 			
 			long count = 0;
 			Point o = new Point(0, 0);
-			for (int i = 0; i < p.Count; i++)
-				for (int j = i + 1; j < p.Count; j++)
-					for (int k = j + 1; k < p.Count; k++)
-						if(ContainsOrigin(p[i], p[j], p[k]))
+			for (int i = 0; i < p.Count; i++){
+				for (int j = i + 1; j < p.Count; j++){
+					for (int k = j + 1; k < p.Count; k++) {
+						if(ContainsOrigin(p[i], p[j], p[k])) {
 							count++;
-
+						}
+					}
+				}
+			}
+			
 			Debug.WriteLine(count);
 		}
 		
