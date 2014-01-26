@@ -13,18 +13,20 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			int n = 600;
+			int n = 2000000;
+			int mx = 32323;
+			int my = 30103;
+			int[] xn = new int[mx];
+			int[] yn = new int[my];
+			for (int i = 0; i < xn.Length; i++)
+				xn[i] = (int) BigInteger.ModPow(1248, i, 32323) - 16161;
+			for (int i = 0; i < yn.Length; i++)
+				yn[i] = (int) BigInteger.ModPow(8421, i, 30103) - 15051;
+			
 			List<Point> p = new List<Point>();
 			Point o = new Point(0, 0);
-			HashSet<Point> h = new HashSet<Point>();
-			
-			for (int i = 1; i <= n; i++)
-			{
-				int x = (int) BigInteger.ModPow(1248, i, 32323) - 16161;
-				int y = (int) BigInteger.ModPow(8421, i, 30103) - 15051;
-				//p.Add(new Point(x, y));
-				h.Add(new Point(x, y));
-			}
+			for (int i = 0; i < n; i++)
+				p.Add(new Point(xn[i % mx], yn[i % my]));	
 			
 			long count = 0;
 //			for (int i = 0; i < p.Count; i++) {
