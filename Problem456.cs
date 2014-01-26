@@ -13,7 +13,7 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			int n = 2000000;
+			int n = 60000;
 			int mx = 32323;
 			int my = 30103;
 			int[] xn = new int[mx];
@@ -25,10 +25,29 @@ namespace ProjectEuler
 			
 			List<Point> p = new List<Point>();
 			Point o = new Point(0, 0);
-			for (int i = 0; i < n; i++)
-				p.Add(new Point(xn[i % mx], yn[i % my]));	
+//			for (int i = 0; i < n; i++)
+//				p.Add(new Point(xn[i % mx], yn[i % my]));
 			
-			long count = 0;
+			List<Point> q1 = new List<Point>();
+			List<Point> q2 = new List<Point>();
+			List<Point> q3 = new List<Point>();
+			List<Point> q4 = new List<Point>();
+			for (int i = 0; i < n; i++) {
+				int x = xn[i % mx];
+				int y = yn[i % my];
+				if (x >= 0 && y > 0)
+					q1.Add(new Point(x, y));
+				else if (x < 0 && y >= 0)
+					q2.Add(new Point(x, y));
+				else if (x <= 0 && y < 0)
+					q3.Add(new Point(x, y));
+				else if (x > 0 && y <= 0)
+					q4.Add(new Point(x, y));
+			}
+				
+			
+			
+//			long count = 0;
 //			for (int i = 0; i < p.Count; i++) {
 //				for (int j = i + 1; j < p.Count; j++) {
 //					for (int k = j + 1; k < p.Count; k++) {
@@ -40,7 +59,10 @@ namespace ProjectEuler
 //				}
 //			}
 			
-			Debug.WriteLine(count);
+//			long count = 0;
+//			for (int i = 0; i < p.Count; i++) {
+//				
+//			}
 		}
 		
 		public static double T(Point p1, Point p2, Point p3)
