@@ -24,44 +24,47 @@ namespace ProjectEuler
 			for (int i = 1; i <= yn.Length; i++)
 				yn[i - 1] = (int) BigInteger.ModPow(8421, i, 30103) - 15051;
 			
-//			List<Point> p = new List<Point>();
-//			for (int i = 0; i < n; i++)
-//				p.Add(new Point(xn[i % mx], yn[i % my]));
+			List<Point>[] points = new List<Point>[4];
+			for (int i = 0; i < points.Length; i++)
+				points[i] = new List<Point>();
 			
-			List<Point> points = new List<Point>();
-			Dictionary<string, int> quadrants = new Dictionary<string, int>();
 			for (int i = 0; i < n; i++) {
-				Point p = new Point(xn[i % mx], yn[i % my]);
-				points.Add(p);
+				int x = xn[i % mx];
+				int y = yn[i % my];
+				if (x >= 0 && y > 0)
+					points[0].Add(new Point(x, y));
+				else if (x < 0 && y >= 0)
+					points[1].Add(new Point(x, y));
+				else if (x <= 0 && y < 0)
+					points[2].Add(new Point(x, y));
+				else if (x > 0 && y <= 0)
+					points[3].Add(new Point(x, y));
 			}
-
-			Point o = new Point(0, 0);
-			for (int i = 0; i < points.Count; i++){
-				for (int j = i + 1; j < points.Count; j++){
-					for (int k = j + 1; k < points.Count; k++) {
-						if(ContainsOrigin(points[i], points[j], points[k])) {
-							count++;
-							// string s = QSort(Quadrant(points[i]), Quadrant(points[j]), Quadrant(points[k]));
-							string s = QSort(FindN(points, points[i]), FindN(points, points[j]), FindN(points, points[k]));
-							if (quadrants.ContainsKey(s))
-								quadrants[s]++;
-							else
-								quadrants.Add(s, 1);
-							
+			
+			for (int i = 0; i < 4; i++) {
+				for (int j = i + 1; j < 4; j++) {
+					for (int k = j + 1; k < 4; k++) {
+						foreach (var p1 in points[i]) {
+							foreach (var p2 in points[j]) {
+								foreach (var p3 in points[k]) {
+									if (ContainsOrigin(p1, p2, p3)) {
+										count++;
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 			
+			
+			
 			Debug.WriteLine(count);
-			foreach (var key in quadrants.Keys) {
-				Debug.WriteLine(key + " " + quadrants[key]);
-			}
 		}
 		
-		public static int FindN(List<Point> points, Point p)
+		public static bool AreValidQuadrants(int i, int j, int k)
 		{
-			return points.IndexOf(p);
+			return true;
 		}
 		
 		public static string QSort(int a, int b, int c)
