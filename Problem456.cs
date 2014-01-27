@@ -41,11 +41,13 @@ namespace ProjectEuler
 					for (int k = j + 1; k < points.Count; k++) {
 						if(ContainsOrigin(points[i], points[j], points[k])) {
 							count++;
-							string s = QSort(Quadrant(points[i]), Quadrant(points[j]), Quadrant(points[k]));
+							// string s = QSort(Quadrant(points[i]), Quadrant(points[j]), Quadrant(points[k]));
+							string s = QSort(FindN(points, points[i]), FindN(points, points[j]), FindN(points, points[k]));
 							if (quadrants.ContainsKey(s))
 								quadrants[s]++;
 							else
 								quadrants.Add(s, 1);
+							
 						}
 					}
 				}
@@ -55,6 +57,11 @@ namespace ProjectEuler
 			foreach (var key in quadrants.Keys) {
 				Debug.WriteLine(key + " " + quadrants[key]);
 			}
+		}
+		
+		public static int FindN(List<Point> points, Point p)
+		{
+			return points.IndexOf(p);
 		}
 		
 		public static string QSort(int a, int b, int c)
