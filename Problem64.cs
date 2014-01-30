@@ -11,7 +11,7 @@ namespace ProjectEuler
 		
 		public static void Solution()
 		{
-			int limit = 13;
+			int limit = 10000;
 			int count = 0;
 			for (int n = 1; n <= limit; n++) {
 				List<int> f = ContinuedFractionSqrt(n);
