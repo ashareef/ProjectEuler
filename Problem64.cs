@@ -12,10 +12,13 @@ namespace ProjectEuler
 		public static void Solution()
 		{
 			int limit = 13;
+			int count = 0;
 			for (int n = 1; n <= limit; n++) {
-				List<int> fraction	
+				List<int> f = ContinuedFractionSqrt(n);
+				if (f.Count % 2 == 0)
+					count++;
 			}
-				
+			Debug.WriteLine(count);
 		}
 		
 		public static List<int> ContinuedFractionSqrt(int n)
@@ -27,13 +30,14 @@ namespace ProjectEuler
 			int a = a0;
 			continuedFraction.Add(a);
 			
-			while (a != 2 * a0) {
-				m = d * a - m;
-				d = (n - m * m) / d;
-				a = (int) Math.Floor((double) (a0 + m) / d);
-				continuedFraction.Add(a);
+			if (a0 * a0 != n) {				
+				while (a != 2 * a0) {
+					m = d * a - m;
+					d = (n - m * m) / d;
+					a = (int) Math.Floor((double) (a0 + m) / d);
+					continuedFraction.Add(a);
+				}
 			}
-			
 			
 			return continuedFraction;
 		}
