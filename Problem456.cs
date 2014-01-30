@@ -41,22 +41,38 @@ namespace ProjectEuler
 					points[3].Add(new Point(x, y));
 			}
 			
+//			for (int i = 0; i < 4; i++) {
+//				for (int j = i + 1; j < 4; j++) {
+//					for (int k = j + 1; k < 4; k++) {
+//						foreach (var p1 in points[i]) {
+//							foreach (var p2 in points[j]) {
+//								foreach (var p3 in points[k]) {
+//									if (ContainsOrigin(p1, p2, p3)) {
+//										count++;
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+			
 			for (int i = 0; i < 4; i++) {
-				for (int j = i + 1; j < 4; j++) {
-					for (int k = j + 1; k < 4; k++) {
-						foreach (var p1 in points[i]) {
-							foreach (var p2 in points[j]) {
-								foreach (var p3 in points[k]) {
-									if (ContainsOrigin(p1, p2, p3)) {
-										count++;
-									}
+				int j = (i + 2) % 4;
+				int k = j;
+				foreach (var p1 in points[i]) {
+					foreach (var p2 in points[j]) {
+						foreach (var p3 in points[k]) {
+							if (!p2.Equals(p3)) {
+								if (ContainsOrigin(p1, p2, p3)) {
+									count++;
+									
 								}
 							}
 						}
 					}
 				}
 			}
-			
 			
 			
 			Debug.WriteLine(count);
