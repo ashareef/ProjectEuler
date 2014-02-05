@@ -22,7 +22,7 @@ namespace ProjectEuler
 			long limit = 1000;
 			long sum = 0;
 			List<long>[] n = new List<long>[limit];
-			List<long> primes = PEUtil.Primes(100);
+			List<long> primes = PEUtil.Primes((long) 100);
 			
 			for (long i = 0; i < limit; i++)
 				n[i] = new List<long>();
