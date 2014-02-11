@@ -9,12 +9,12 @@ namespace ProjectEuler
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
 			
-            Problem457.Solution();
+            Problem142.Solution();
             
             sw.Stop();
             Debug.WriteLine("elapsed: {0}", sw.Elapsed);
