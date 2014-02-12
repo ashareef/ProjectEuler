@@ -18,12 +18,41 @@ namespace ProjectEuler
 		
 		public static void Solution()
 		{
-			long limit = (long) Math.Pow(2,10);
+			long limit = (long) Math.Pow(2,8);
+			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit + 1));
 			//167105729501 1.4
-			NaiveSolution(limit);
-			//Solution1(limit);
 			
+			//NaiveSolution(limit);
+			//Solution1(limit);
+			foreach (var e in p) {
+				Debug.Write(e + " ");
+			}
+			Debug.WriteLine("");
+			int maxLen = p.Count;
+			for (int i = 0; i < p.Count; i++) {
+				for (int len = 0; len < maxLen; len++) {
+					for (int j = i; j <= len; j++) {
+						Debug.Write(p[j] + " ");
+					}
+					Debug.WriteLine("");
+				}
+			}
 		}
+		
+		
+//		public static long SquareFreeCount(long limit, List<long> primes, int position, long numPrimeFactors, long currentComposite, long count)
+//		{
+//			long nextComposite = currentComposite * primes[position] * primes[position];
+//			while (nextComposite <= limit) {
+//				if (numPrimeFactors % 2 == 0)
+//					count -= PEUtil.NumOfMultiples(limit, nextComposite);
+//				else
+//					count += PEUtil.NumOfMultiples(limit, nextComposite);
+//				count += SquareFreeCount(limit, primes, position + 1, numPrimeFactors + 1, nextComposite * primes[position] * primes[position], count);
+//				position++;
+//			}
+//			return count;
+//		}
 		
 		public static void Solution1(long limit)
 		{

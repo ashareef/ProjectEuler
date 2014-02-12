@@ -80,6 +80,12 @@ namespace ProjectEuler
 			result = BigInteger.Divide(n,m);
 			return result;
 		}
-			
+		
+		public static long NumOfMultiples(long n, long m)
+		{
+			long result = 0;
+			result = n / m;
+			return result;
+		}
 	}
 }
