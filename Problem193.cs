@@ -13,17 +13,20 @@ namespace ProjectEuler
 		{
 			// 637462
 			// 625
-			long limit = (long) Math.Pow(2,10);
+			long limit = 1000;//(long) Math.Pow(2,10);
 			long count = limit;
 			NaiveSolution(limit);
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
+//			foreach (var e in p) {
+//				Debug.WriteLine(e * e + " " + PEUtil.NumOfMultiples(limit, e * e));
+//			}
 			
 			for (int i = 0; i < p.Count; i++) {
 				long p2 = p[i] * p[i];
 				if (p2 > limit)
 					break;
 				else
-					count -= PEUtil.Nu(limit, p2);
+					count -= PEUtil.NumOfMultiples(limit, p2);
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
@@ -32,7 +35,7 @@ namespace ProjectEuler
 					if (p2 > limit)
 						break;
 					else
-						count += PEUtil.Nu(limit, p2);
+						count += PEUtil.NumOfMultiples(limit, p2);
 				}
 			}
 			
@@ -43,7 +46,7 @@ namespace ProjectEuler
 						if (p2 > limit)
 							break;
 						else
-							count -= PEUtil.Nu(limit, p2);
+							count -= PEUtil.NumOfMultiples(limit, p2);
 					}
 				}
 			}
@@ -56,7 +59,7 @@ namespace ProjectEuler
 							if (p2 > limit)
 								break;
 							else
-								count += PEUtil.Nu(limit, p2);
+								count += PEUtil.NumOfMultiples(limit, p2);
 						}
 					}
 				}

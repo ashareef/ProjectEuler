@@ -72,5 +72,13 @@ namespace ProjectEuler
 			}
 			return result;
 		}
+		
+		public static long NumOfMultiples(long n, long m)
+		{
+			long result = 0;
+			result = (long) Math.Floor((double) n / m);
+			return result;
+		}
+			
 	}
 }
