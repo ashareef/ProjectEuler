@@ -11,8 +11,58 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			//2^20 => 637462 elapsed: 00:00:00.2130239
-			NaiveSolution((long) Math.Pow(2,20));
+			// 637462
+			// 625
+			long limit = (long) Math.Pow(2,10);
+			long count = limit;
+			NaiveSolution(limit);
+			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
+			
+			for (int i = 0; i < p.Count; i++) {
+				long p2 = p[i] * p[i];
+				if (p2 > limit)
+					break;
+				else
+					count -= PEUtil.Nu(limit, p2);
+			}
+			
+			for (int i = 0; i < p.Count; i++) {
+				for (int j = i + 1; j < p.Count; j++) {
+					long p2 = p[i] * p[i] * p[j] * p[j];
+					if (p2 > limit)
+						break;
+					else
+						count += PEUtil.Nu(limit, p2);
+				}
+			}
+			
+			for (int i = 0; i < p.Count; i++) {
+				for (int j = i + 1; j < p.Count; j++) {
+					for (int k = j + 1; k < p.Count; k++) {
+						long p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k];
+						if (p2 > limit)
+							break;
+						else
+							count -= PEUtil.Nu(limit, p2);
+					}
+				}
+			}
+			
+			for (int i = 0; i < p.Count; i++) {
+				for (int j = i + 1; j < p.Count; j++) {
+					for (int k = j + 1; k < p.Count; k++) {
+						for (int l = k + 1; l < p.Count; l++) {
+							long p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l];
+							if (p2 > limit)
+								break;
+							else
+								count += PEUtil.Nu(limit, p2);
+						}
+					}
+				}
+			}
+			
+			Debug.WriteLine(count);
 		}
 		
 		public static void NaiveSolution(long limit)
