@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -73,10 +74,10 @@ namespace ProjectEuler
 			return result;
 		}
 		
-		public static long NumOfMultiples(long n, long m)
+		public static BigInteger NumOfMultiples(BigInteger n, BigInteger m)
 		{
-			long result = 0;
-			result = (long) Math.Floor((double) n / m);
+			BigInteger result = 0;
+			result = BigInteger.Divide(n,m);
 			return result;
 		}
 			

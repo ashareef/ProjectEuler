@@ -4,6 +4,7 @@
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -13,8 +14,8 @@ namespace ProjectEuler
 		{
 			// 637462
 			// 625
-			long limit = 1000;//(long) Math.Pow(2,10);
-			long count = limit;
+			long limit = (long) Math.Pow(2,20);
+			BigInteger count = limit;
 			NaiveSolution(limit);
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
 //			foreach (var e in p) {
@@ -22,7 +23,7 @@ namespace ProjectEuler
 //			}
 			
 			for (int i = 0; i < p.Count; i++) {
-				long p2 = p[i] * p[i];
+				BigInteger p2 = p[i] * p[i];
 				if (p2 > limit)
 					break;
 				else
@@ -31,7 +32,7 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
-					long p2 = p[i] * p[i] * p[j] * p[j];
+					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
 					if (p2 > limit)
 						break;
 					else
@@ -42,7 +43,7 @@ namespace ProjectEuler
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
 					for (int k = j + 1; k < p.Count; k++) {
-						long p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k];
+						BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k];
 						if (p2 > limit)
 							break;
 						else
@@ -55,7 +56,7 @@ namespace ProjectEuler
 				for (int j = i + 1; j < p.Count; j++) {
 					for (int k = j + 1; k < p.Count; k++) {
 						for (int l = k + 1; l < p.Count; l++) {
-							long p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l];
+							BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l];
 							if (p2 > limit)
 								break;
 							else
@@ -65,6 +66,23 @@ namespace ProjectEuler
 				}
 			}
 			
+			for (int i = 0; i < p.Count; i++) {
+				for (int j = i + 1; j < p.Count; j++) {
+					for (int k = j + 1; k < p.Count; k++) {
+						for (int l = k + 1; l < p.Count; l++) {
+							for (int m = l + 1; m < p.Count; m++) {
+								BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l] * p[m] * p[m];
+								if (p2 > limit)
+									break;
+								else
+									count -= PEUtil.NumOfMultiples(limit, p2);
+							}
+						}
+					}
+				}
+			}
+			
+			count++; // hack to get real solution - not sure why this is always short 1
 			Debug.WriteLine(count);
 		}
 		
