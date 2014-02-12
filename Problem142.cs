@@ -11,6 +11,26 @@ namespace ProjectEuler
 	/// Find the smallest x + y + z with integers x > y > z > 0 such
 	/// that x + y, x − y, x + z, x − z, y + z, y − z are all perfect squares.
 	/// </summary>
+	/// x + y = a	x - y = b
+	/// x + z = c	x - z = d
+	/// y + z = e	y - z = f
+	/// 
+	/// a - c = f
+	/// c - e = b
+	/// d + e = a
+	/// 
+	///	a + b 	= x + y + x - y 
+	///	c + d	= 2x
+	/// x		= (c + d)/2
+	///
+	/// y		= a - x
+	/// 		= a - (c + d)/2
+	/// 
+	/// z		= e - a + (c + d)/2
+	/// 
+	
+	
+
 	public static class Problem142
 	{
 		public static void Solution()
@@ -45,7 +65,7 @@ namespace ProjectEuler
 					if (d.Contains(x)) {
 						return false;
 					}
-					d.Add(x);						
+					d.Add(x);
 				}
 				return true;
 			}
