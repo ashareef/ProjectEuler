@@ -10,14 +10,20 @@ namespace ProjectEuler
 {
 	public static class Problem193
 	{
+		/// <summary>
+		/// Squarefree Numbers
+		/// </summary>
+		/// A positive integer n is called squarefree, if no square of a prime divides n, thus 1, 2, 3, 5, 6, 7, 10, 11 are squarefree, but not 4, 8, 9, 12.
+		/// How many squarefree numbers are there below 2^50?
+		
 		public static void Solution()
 		{
-			long limit = (long) Math.Pow(2,50);
+			long limit = (long) Math.Pow(2,27);
 			BigInteger count = limit;
-			//NaiveSolution(limit);
+			NaiveSolution(limit);
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
-			// since (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19) > 2^25
-			// need 8 nested loops
+			// since (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23) > 2^25
+			// need only 8 nested loops
 			
 			for (int i = 0; i < p.Count; i++) {
 				BigInteger p0 = p[i] * p[i];
@@ -270,8 +276,7 @@ namespace ProjectEuler
 					}
 				}
 			}
-			
-			count++; // hack to get real solution - not sure why this is always short 1
+		
 			Debug.WriteLine(count);
 		}
 		
@@ -288,6 +293,7 @@ namespace ProjectEuler
 			foreach (var e in notSquareFree)
 				if (!e)
 					count++;
+			count--; // because 0 is not a square free number
 			Debug.WriteLine(count);
 		}
 	}
@@ -319,8 +325,3 @@ namespace ProjectEuler
 
 
 
-/// <summary>
-/// Squarefree Numbers
-/// </summary>
-/// A positive integer n is called squarefree, if no square of a prime divides n, thus 1, 2, 3, 5, 6, 7, 10, 11 are squarefree, but not 4, 8, 9, 12.
-/// How many squarefree numbers are there below 2^50?
