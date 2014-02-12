@@ -2,6 +2,8 @@
 // 2/12/2014
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ProjectEuler
 {
@@ -13,14 +15,17 @@ namespace ProjectEuler
 
 	public static class Problem146
 	{
+		// n^2 + x is prime, where x is odd
+		// n^2 must be even, therefore n is even
 		public static void Solution()
 		{
+			long limit = 1000000;
+			NaiveSolution(limit);
 		}
 		
-		public static void NaiveSolution()
+		public static void NaiveSolution(long limit)
 		{
-			
-		}
-			
+			List<long> p = PEUtil.Primes(limit);
+		}			
 	}
 }
