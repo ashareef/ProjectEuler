@@ -12,26 +12,28 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			// 637462
-			// 625
-			long limit = (long) Math.Pow(2,23);
+			long limit = (long) Math.Pow(2,32);
 			BigInteger count = limit;
 			//NaiveSolution(limit);
+			Debug.WriteLine("1305513584");
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
 			// since (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19) > 2^25
 			// need 8 nested loops
 			
 			for (int i = 0; i < p.Count; i++) {
-				BigInteger p1 = p[i] * p[i];
-				if (p1 > limit)
+				BigInteger p0 = p[i] * p[i];
+				if (p0 > limit)
 					break;
 				else
-					count -= PEUtil.NumOfMultiples(limit, p1);
+					count -= PEUtil.NumOfMultiples(limit, p0);
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
+					BigInteger p1 = p0 * p[j] * p[j];
 					if (p1 > limit)
 						break;
 					else
@@ -40,9 +42,12 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
@@ -55,13 +60,16 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
@@ -75,17 +83,20 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
-							if (p3 > limit)
+							if (p3 * 4 > limit)
 								break;
 							for (int m = l + 1; m < p.Count; m++) {
 								BigInteger p4 = p3 * p[m] * p[m];
@@ -100,21 +111,24 @@ namespace ProjectEuler
 			}
 
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
-							if (p3 > limit)
+							if (p3 * 4 > limit)
 								break;
 							for (int m = l + 1; m < p.Count; m++) {
 								BigInteger p4 = p3 * p[m] * p[m];
-								if (p4 > limit)
+								if (p4 * 4 > limit)
 									break;
 								for (int n = m + 1; n < p.Count; n++) {
 									BigInteger p5 = p4 * p[n] * p[n];
@@ -130,25 +144,28 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
-							if (p3 > limit)
+							if (p3 * 4 > limit)
 								break;
 							for (int m = l + 1; m < p.Count; m++) {
 								BigInteger p4 = p3 * p[m] * p[m];
-								if (p4 > limit)
+								if (p4 * 4 > limit)
 									break;
 								for (int n = m + 1; n < p.Count; n++) {
 									BigInteger p5 = p4 * p[n] * p[n];
-									if (p5 > limit)
+									if (p5 * 4 > limit)
 										break;
 									for (int o = n + 1; o < p.Count; o++) {
 										BigInteger p6 = p5 * p[o] * p[o];
@@ -165,29 +182,32 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
-							if (p3 > limit)
+							if (p3 * 4 > limit)
 								break;
 							for (int m = l + 1; m < p.Count; m++) {
 								BigInteger p4 = p3 * p[m] * p[m];
-								if (p4 > limit)
+								if (p4 * 4 > limit)
 									break;
 								for (int n = m + 1; n < p.Count; n++) {
 									BigInteger p5 = p4 * p[n] * p[n];
-									if (p5 > limit)
+									if (p5 * 4 > limit)
 										break;
 									for (int o = n + 1; o < p.Count; o++) {
 										BigInteger p6 = p5 * p[o] * p[o];
-										if (p6 > limit)
+										if (p6 * 4 > limit)
 											break;
 										for (int q = o + 1; q < p.Count; q++) {
 											BigInteger p7 = p6 * p[q] * p[q];
@@ -205,33 +225,36 @@ namespace ProjectEuler
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
+				BigInteger p0 = p[i] * p[i];
+				if (p0 * 4 > limit)
+					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
-					if (p1 > limit)
+					BigInteger p1 = p0 * p[j] * p[j];
+					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
 						BigInteger p2 = p1 * p[k] * p[k];
-						if (p2 > limit)
+						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
 							BigInteger p3 = p2 * p[l] * p[l];
-							if (p3 > limit)
+							if (p3 * 4 > limit)
 								break;
 							for (int m = l + 1; m < p.Count; m++) {
 								BigInteger p4 = p3 * p[m] * p[m];
-								if (p4 > limit)
+								if (p4 * 4 > limit)
 									break;
 								for (int n = m + 1; n < p.Count; n++) {
 									BigInteger p5 = p4 * p[n] * p[n];
-									if (p5 > limit)
+									if (p5 * 4 > limit)
 										break;
 									for (int o = n + 1; o < p.Count; o++) {
 										BigInteger p6 = p5 * p[o] * p[o];
-										if (p6 > limit)
+										if (p6 * 4 > limit)
 											break;
 										for (int q = o + 1; q < p.Count; q++) {
 											BigInteger p7 = p6 * p[q] * p[q];
-											if (p7 > limit)
+											if (p7 * 4 > limit)
 												break;
 											for (int r = q + 1; r < p.Count; r++) {
 												BigInteger p8 = p7 * p[r] * p[r];
