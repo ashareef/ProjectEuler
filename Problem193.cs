@@ -18,7 +18,8 @@ namespace ProjectEuler
 		
 		public static void Solution()
 		{
-			long limit = (long) Math.Pow(2,27);
+			//167105729501 1.4
+			long limit = (long) Math.Pow(2,25);
 			BigInteger count = limit;
 			NaiveSolution(limit);
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
@@ -27,10 +28,7 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				BigInteger p0 = p[i] * p[i];
-				if (p0 > limit)
-					break;
-				else
-					count -= PEUtil.NumOfMultiples(limit, p0);
+				count -= PEUtil.NumOfMultiples(limit, p0);
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
@@ -38,7 +36,7 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Multiply(p[j], p[j]));
 					if (p1 > limit)
 						break;
 					else
@@ -51,11 +49,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Multiply(p[j], p[j]));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Multiply(p[k], p[k]));
 						if (p2 > limit)
 							break;
 						else
@@ -69,11 +67,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -92,11 +90,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -120,11 +118,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -153,11 +151,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -191,11 +189,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -234,11 +232,11 @@ namespace ProjectEuler
 				if (p0 * 4 > limit)
 					break;
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p1 = p0 * p[j] * p[j];
+					BigInteger p1 = BigInteger.Multiply(p0, BigInteger.Pow(p[j], 2));
 					if (p1 * 4 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p1 * p[k] * p[k];
+						BigInteger p2 = BigInteger.Multiply(p1, BigInteger.Pow(p[k], 2));
 						if (p2 * 4 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
@@ -276,24 +274,23 @@ namespace ProjectEuler
 					}
 				}
 			}
-		
+			
 			Debug.WriteLine(count);
 		}
 		
 		public static void NaiveSolution(long limit)
 		{
 			List<long> primes = PEUtil.Primes((long) Math.Sqrt(limit)+1);
-			bool[] notSquareFree = new bool[limit + 1];
+			bool[] notSquareFree = new bool[limit];
 			long count = 0;
 			foreach (var p in primes) {
 				long p2 = p * p;
 				for (long i = p2; i <= limit; i += p2)
-					notSquareFree[i] = true;
+					notSquareFree[i - 1] = true;
 			}
 			foreach (var e in notSquareFree)
 				if (!e)
 					count++;
-			count--; // because 0 is not a square free number
 			Debug.WriteLine(count);
 		}
 	}
