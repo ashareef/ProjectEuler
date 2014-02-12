@@ -42,8 +42,11 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
+					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
+					if (p2 > limit)
+						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k];
+						p2 *= p[k] * p[k];
 						if (p2 > limit)
 							break;
 						else
@@ -54,9 +57,15 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
+					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
+					if (p2 > limit)
+						break;
 					for (int k = j + 1; k < p.Count; k++) {
+						p2 *= p[k] * p[k];
+						if (p2 > limit)
+							break;
 						for (int l = k + 1; l < p.Count; l++) {
-							BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l];
+							p2 *= p[l] * p[l];
 							if (p2 > limit)
 								break;
 							else
@@ -68,10 +77,19 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
+					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
+					if (p2 > limit)
+						break;
 					for (int k = j + 1; k < p.Count; k++) {
+						p2 *= p[k] * p[k];
+						if (p2 > limit)
+							break;
 						for (int l = k + 1; l < p.Count; l++) {
+							p2 *= p[l] * p[l];
+							if (p2 > limit)
+								break;
 							for (int m = l + 1; m < p.Count; m++) {
-								BigInteger p2 = p[i] * p[i] * p[j] * p[j] * p[k] * p[k] * p[l] * p[l] * p[m] * p[m];
+								p2 *= p[m] * p[m];
 								if (p2 > limit)
 									break;
 								else
