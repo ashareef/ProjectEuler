@@ -23,20 +23,16 @@ namespace ProjectEuler
 			//167105729501 1.4
 			
 			//NaiveSolution(limit);
-			//Solution1(limit);
-//			foreach (var e in p) {
-//				Debug.Write(e + " ");
-//			}
-//			Debug.WriteLine("");
+			Solution1(limit);
 
-			for (int i = 0; i < p.Count; i++) {
-				for (int len = 0; len < p.Count - i; len++) {
-					for (int j = i; j <= i + len; j++) {
-						Debug.Write(p[j] + " ");
-					}
-					Debug.WriteLine("");
-				}
-			}
+//			for (int i = 0; i < p.Count; i++) {
+//				for (int len = 0; len < p.Count - i; len++) {
+//					for (int j = i; j <= i + len; j++) {
+//						Debug.Write(p[j] + " ");
+//					}
+//					Debug.WriteLine("");
+//				}
+//			}
 		}
 		
 		public static void Solution1(long limit)
