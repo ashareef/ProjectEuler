@@ -12,10 +12,9 @@ namespace ProjectEuler
 	{
 		public static void Solution()
 		{
-			long limit = (long) Math.Pow(2,32);
+			long limit = (long) Math.Pow(2,50);
 			BigInteger count = limit;
 			//NaiveSolution(limit);
-			Debug.WriteLine("1305513584");
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
 			// since (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19) > 2^25
 			// need 8 nested loops
