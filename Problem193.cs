@@ -14,7 +14,7 @@ namespace ProjectEuler
 		{
 			// 637462
 			// 625
-			long limit = (long) Math.Pow(2,20);
+			long limit = (long) Math.Pow(2,15);
 			BigInteger count = limit;
 			NaiveSolution(limit);
 			List<long> p = PEUtil.Primes((long) Math.Sqrt(limit) + 1);
@@ -23,30 +23,30 @@ namespace ProjectEuler
 //			}
 			
 			for (int i = 0; i < p.Count; i++) {
-				BigInteger p2 = p[i] * p[i];
-				if (p2 > limit)
+				BigInteger p1 = p[i] * p[i];
+				if (p1 > limit)
 					break;
 				else
-					count -= PEUtil.NumOfMultiples(limit, p2);
+					count -= PEUtil.NumOfMultiples(limit, p1);
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
-					if (p2 > limit)
+					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
+					if (p1 > limit)
 						break;
 					else
-						count += PEUtil.NumOfMultiples(limit, p2);
+						count += PEUtil.NumOfMultiples(limit, p1);
 				}
 			}
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
-					if (p2 > limit)
+					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
+					if (p1 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						p2 *= p[k] * p[k];
+						BigInteger p2 = p1 * p[k] * p[k];
 						if (p2 > limit)
 							break;
 						else
@@ -57,48 +57,26 @@ namespace ProjectEuler
 			
 			for (int i = 0; i < p.Count; i++) {
 				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
-					if (p2 > limit)
+					BigInteger p1 = p[i] * p[i] * p[j] * p[j];
+					if (p1 > limit)
 						break;
 					for (int k = j + 1; k < p.Count; k++) {
-						p2 *= p[k] * p[k];
+						BigInteger p2 = p1 * p[k] * p[k];
 						if (p2 > limit)
 							break;
 						for (int l = k + 1; l < p.Count; l++) {
-							p2 *= p[l] * p[l];
-							if (p2 > limit)
+							BigInteger p3 = p2 * p[l] * p[l];
+							if (p3 > limit)
 								break;
 							else
-								count += PEUtil.NumOfMultiples(limit, p2);
+								count += PEUtil.NumOfMultiples(limit, p3);
 						}
 					}
 				}
 			}
 			
-			for (int i = 0; i < p.Count; i++) {
-				for (int j = i + 1; j < p.Count; j++) {
-					BigInteger p2 = p[i] * p[i] * p[j] * p[j];
-					if (p2 > limit)
-						break;
-					for (int k = j + 1; k < p.Count; k++) {
-						p2 *= p[k] * p[k];
-						if (p2 > limit)
-							break;
-						for (int l = k + 1; l < p.Count; l++) {
-							p2 *= p[l] * p[l];
-							if (p2 > limit)
-								break;
-							for (int m = l + 1; m < p.Count; m++) {
-								p2 *= p[m] * p[m];
-								if (p2 > limit)
-									break;
-								else
-									count -= PEUtil.NumOfMultiples(limit, p2);
-							}
-						}
-					}
-				}
-			}
+
+
 			
 			count++; // hack to get real solution - not sure why this is always short 1
 			Debug.WriteLine(count);
