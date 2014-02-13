@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="PEUtil.cs" />
     <Compile Include="Problem001.cs" />
+    <Compile Include="Problem003.cs" />
     <Compile Include="Problem142.cs" />
     <Compile Include="Problem146.cs" />
     <Compile Include="Problem160.cs" />
