@@ -26,7 +26,7 @@ namespace ProjectEuler
 				int temp = fn_1;
 				fn_1 += fn;
 				fn = temp;
-				if (fn_1 % 2 == 0)
+				if (fn_1 % 2 == 0)	// only add even numbers
 					sum += fn_1;
 			}
 	
