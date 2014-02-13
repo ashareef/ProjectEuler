@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace ProjectEuler
 {
-	public static class Problem64
+	public static class Problem064
 	{
 		// http://web.math.princeton.edu/mathlab/jr02fall/Periodicity/mariusjp.pdf
 		// http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion
