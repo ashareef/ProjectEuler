@@ -25,33 +25,36 @@ namespace ProjectEuler
 		public static void Solution()
 		{
 			NaiveSolution();
-			Debug.WriteLine(S(7) % 7);
 		}
 		
 		public static void NaiveSolution()
 		{
-			List<long> primes = PEUtil.Primes((long) 100);
+			List<long> primes = PEUtil.Primes((long) 10000);
+			BigInteger sum = 0;
 			primes.RemoveAt(0); // remove 2
 			primes.RemoveAt(0); // remove 3
 			foreach (var p in primes) {
-				
+				sum += BigInteger.ModPow(S(p), 1, p);
 			}
+			Debug.WriteLine(sum);
 		}
 		
-		public static long S(long p)
+		public static BigInteger S(BigInteger p)
 		{
-			long sum = 0;
-			for (int k = 1; k <= 5; k++) {
+			BigInteger sum = 0;
+			for (BigInteger k = 1; k <= 5; k++) {
 				sum += Factorial(p - k);
+//				Debug.WriteLine((p-k).ToString());
 			}
 			return sum;
 		}
 		
-		public static long Factorial(long n)
+		public static BigInteger Factorial(BigInteger n)
 		{
-			long product = 1;
-			for (int i = 2; i <= n; i++) {
+			BigInteger product = 1;
+			for (BigInteger i = 2; i <= n; i++) {
 				product *= i;
+//				Debug.WriteLine(n + " " + i + " " + product);
 			}
 			return product;
 		}
